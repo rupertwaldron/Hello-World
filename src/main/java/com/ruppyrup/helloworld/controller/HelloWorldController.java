@@ -16,6 +16,15 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 public class HelloWorldController {
+
+    @GetMapping("/")
+    public ResponseEntity<String> start() {
+        log.info("Start endpoint pinged");
+        String output = """
+                { "message": "Try /helloworld | /hello/{name} | /ipaddress" }
+                """;
+        return new ResponseEntity<>(output, HttpStatus.OK);
+    }
     @GetMapping("/helloworld")
     public ResponseEntity<String> helloWorld() {
         log.info("Hello world got pinged");
